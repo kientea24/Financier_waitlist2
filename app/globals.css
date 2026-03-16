@@ -64,6 +64,54 @@
   }
 }
 
+@keyframes hero-base-breathe {
+  0%,
+  100% {
+    opacity: 1;
+    transform: scale(1.02) translate3d(0, 0, 0);
+  }
+  50% {
+    opacity: 0.96;
+    transform: scale(1.08) translate3d(-0.75%, -0.6%, 0);
+  }
+}
+
+@keyframes hero-foreground-breathe {
+  0%,
+  100% {
+    opacity: 1;
+    transform: scale(1) translate3d(0, 1.2%, 0);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.055) translate3d(0.4%, -0.9%, 0);
+  }
+}
+
+.hero-base-layer,
+.hero-foreground-layer {
+  backface-visibility: hidden;
+  transform-origin: center center;
+  will-change: opacity, transform;
+}
+
+.hero-base-layer {
+  animation: hero-base-breathe 13s ease-in-out infinite;
+}
+
+.hero-foreground-layer {
+  animation: hero-foreground-breathe 13s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-base-layer,
+  .hero-foreground-layer {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+}
+
 @layer base {
   * {
     @apply border-border;

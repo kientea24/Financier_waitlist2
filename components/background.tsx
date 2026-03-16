@@ -95,21 +95,51 @@ const VideoWithPlaceholder = ({
 export const Background = ({
   src,
   placeholder,
+  foregroundSrc,
 }: {
   src: string;
   placeholder?: string;
+  foregroundSrc?: string;
 }) => {
   const extension = getFileExtension(src);
   const isVideoFile = isVideo(extension);
 
-  const classNames =
-    "absolute bg-background left-0 top-0 w-full h-full object-cover rounded-[42px] md:rounded-[72px]";
+  const mediaClassNames =
+    "absolute left-0 top-0 h-full w-full object-cover rounded-[42px] md:rounded-[72px]";
+  const videoMediaClassNames = cn(mediaClassNames, "bg-background");
+  const containerClassNames =
+    "absolute inset-0 overflow-hidden rounded-[42px] md:rounded-[72px]";
+
+  if (foregroundSrc) {
+    return (
+      <div className={containerClassNames}>
+        <Image
+          priority
+          loading="eager"
+          src={src}
+          alt="Background landscape"
+          className={cn(mediaClassNames, "hero-base-layer")}
+          sizes="100vw"
+          fill
+        />
+        <Image
+          priority
+          loading="eager"
+          src={foregroundSrc}
+          alt="Background foreground"
+          className={cn(mediaClassNames, "hero-foreground-layer")}
+          sizes="100vw"
+          fill
+        />
+      </div>
+    );
+  }
 
   if (isVideoFile) {
     return (
       <VideoWithPlaceholder
         src={src}
-        className={classNames}
+        className={videoMediaClassNames}
         placeholder={placeholder}
       />
     );
@@ -121,7 +151,7 @@ export const Background = ({
       loading="eager"
       src={src}
       alt="Background"
-      className={classNames}
+      className={videoMediaClassNames}
       sizes="100vw"
       fill
     />
