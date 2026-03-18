@@ -7,8 +7,8 @@ export default function Home() {
     <main className="p-inset h-[100dvh] w-full">
       <div className="relative h-full w-full">
         <Background
-          src="/paris_landscape.png"
-          foregroundSrc="/paris_man.png"
+          src="/Paris Landscape 3.png"
+          foregroundSrc="/Paris_Man3 copy.png"
         />
         <Newsletter />
         <Footer />
