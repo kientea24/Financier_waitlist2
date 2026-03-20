@@ -51,8 +51,8 @@ export const Newsletter = () => {
         layout="position"
         transition={{ duration: DURATION, ease: EASE_OUT }}
       >
-        <h1 className="font-serif text-5xl italic short:lg:text-8xl sm:text-8xl lg:text-9xl text-foreground">
-          Synecdoche®
+        <h1 className="font-serif text-5xl italic short:lg:text-8xl sm:text-8xl lg:text-9xl text-[#4A3427] [text-shadow:0_8px_24px_rgba(255,255,255,0.12)]">
+          Financier
         </h1>
       </motion.div>
 
@@ -92,7 +92,10 @@ export const Newsletter = () => {
                       autoCapitalize="off"
                       autoComplete="email"
                       placeholder="Enter your email"
-                      className={inputVariants()}
+                      className={cn(
+                        inputVariants(),
+                        "text-[#3B2A20] placeholder:text-[rgba(91,67,52,0.65)]"
+                      )}
                       initial={isInitialRender.current ? false : { opacity: 0 }}
                       animate={{ opacity: 1 }}
                       exit={{
@@ -149,11 +152,14 @@ export const Newsletter = () => {
                     ease: EASE_OUT,
                     delay: DELAY,
                   }}
-                  className="text-base short:lg:text-lg sm:text-lg lg:text-xl !leading-[1.1] font-medium text-center text-foreground text-pretty"
+                  className="text-base short:lg:text-lg sm:text-lg lg:text-xl !leading-[1.1] font-medium text-center text-[#F0E4D3] text-pretty [text-shadow:0_8px_24px_rgba(0,0,0,0.22)]"
                 >
-                  Stay updated with the latest news and exclusive content!
-                  Subscribe to our newsletter today and never miss out on
-                  exciting updates.
+                  What Wall Street reads before the market opens.
+                  <br />
+                  Financier delivers one elegant daily brief that makes complex
+                  markets simple.
+                  <br />
+                  Built to be read in under 3 minutes.
                 </motion.p>
               </div>
             </motion.div>
